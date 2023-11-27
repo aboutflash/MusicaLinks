@@ -1,0 +1,40 @@
+{
+  "name": "musicalink",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint ./src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "generate-api": "npm run generate-api:clean && npm run generate-api:tidal",
+    "generate-api:clean": "bunx rimraf ./src/api/tidal",
+    "generate-api:tidal": "bunx openapi-typescript-codegen -i ./api/tidal-catalog-openapi-3.0.json -o ./src/api/tidal",
+    "prestart": "npm run generate-api"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.20.0",
+    "react-router-dom": "^6.20.0",
+    "styled-components": "^6.1.1",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "eslint": "^8.54.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0",
+    "openapi-typescript-codegen": "^0.25.0"
+  }
+}
